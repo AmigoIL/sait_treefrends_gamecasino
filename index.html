@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1528">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="iGame">
+  <title>iGame | Мини-игры на рейтинг</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="styles.override.css">
+</head>
+<body data-page="home">
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html">
+        <span class="brand__badge">iG</span>
+        <span class="brand__text">iGame</span>
+      </a>
+      <nav class="site-nav" aria-label="Основная навигация">
+        <a href="index.html">Главная</a>
+        <a href="coin-toss.html">Монетка</a>
+        <a href="minesweeper.html">Мины</a>
+        <a href="rps.html">КНБ</a>
+      </nav>
+    </div>
+    <div class="container">
+      <section class="bank-bar" aria-label="Игровой рейтинг">
+        <div class="bank-bar__group">
+          <article class="bank-pill">
+            <span class="bank-pill__label">Рейтинг</span>
+            <strong class="bank-pill__value" data-bank-balance>1 000</strong>
+          </article>
+          <article class="bank-pill">
+            <span class="bank-pill__label">Общий счет</span>
+            <strong class="bank-pill__value" data-bank-profit>+0</strong>
+          </article>
+          <article class="bank-pill">
+            <span class="bank-pill__label">Удачных раундов</span>
+            <strong class="bank-pill__value" data-bank-wins>0</strong>
+          </article>
+          <article class="bank-pill">
+            <span class="bank-pill__label">Статус</span>
+            <strong class="bank-pill__value" data-bank-rank>В игре</strong>
+          </article>
+        </div>
+        <div class="bank-bar__actions">
+          <button class="button button--ghost button--small" type="button" data-install-trigger>Установить</button>
+          <button class="button button--ghost button--small" type="button" data-bank-reset>Сбросить рейтинг</button>
+        </div>
+      </section>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero hero--home">
+      <div class="container hero__layout hero__layout--home">
+        <div class="hero__content">
+          <p class="eyebrow">Игры 3 друзей</p>
+          <h1>iGame</h1>
+          <p class="hero__lead">
+            Три мини-игры, один общий рейтинг и быстрые раунды прямо в браузере. Выбирайте режим, ставьте рейтинг и переходите между играми без перезагрузки банка.
+          </p>
+          <div class="hero__actions">
+            <a class="button button--accent" href="minesweeper.html">Играть в мины</a>
+            <a class="button button--ghost" href="coin-toss.html">Открыть монетку</a>
+          </div>
+        </div>
+
+        <aside class="hero-panel hero-panel--raised" aria-label="Сводка игрока">
+          <article class="dashboard-card dashboard-card--jackpot">
+            <span class="dashboard-card__label">Общий рейтинг</span>
+            <strong class="dashboard-card__value" data-bank-balance>1 000</strong>
+            <p class="dashboard-card__text">Ваш рейтинг хранится между всеми страницами сайта и меняется после каждого раунда.</p>
+          </article>
+          <div class="dashboard-grid">
+            <article class="dashboard-card">
+              <span class="dashboard-card__label">Общий счет</span>
+              <strong class="dashboard-card__value" data-bank-profit>+0</strong>
+            </article>
+            <article class="dashboard-card">
+              <span class="dashboard-card__label">Сыграно раундов</span>
+              <strong class="dashboard-card__value" data-bank-rounds>0</strong>
+            </article>
+            <article class="dashboard-card">
+              <span class="dashboard-card__label">Лучший банк</span>
+              <strong class="dashboard-card__value" data-bank-best>1 000</strong>
+            </article>
+            <article class="dashboard-card">
+              <span class="dashboard-card__label">Победных раундов</span>
+              <strong class="dashboard-card__value" data-bank-wins>0</strong>
+            </article>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading section-heading--center">
+          <h2>Три игры под один рейтинг</h2>
+          <p>Все карточки и показатели сохранены, а общий банк сразу виден на главной странице. Можно быстро выбрать нужный режим и перейти в игру.</p>
+        </div>
+
+        <div class="game-grid">
+          <article class="game-card">
+            <div class="game-card__icon" aria-hidden="true">◎</div>
+            <span class="game-card__badge">x1.90 за угадывание</span>
+            <h3>Монетка</h3>
+            <p>Выбирайте сторону, ставьте рейтинг и ловите быстрые раунды с анимацией броска.</p>
+            <a class="button button--accent" href="coin-toss.html">Играть</a>
+          </article>
+
+          <article class="game-card">
+            <div class="game-card__icon" aria-hidden="true">✦</div>
+            <span class="game-card__badge">до x6.40 за проход</span>
+            <h3>Мины слева направо</h3>
+            <p>На каждом ходе открываются три варианта. Выберите безопасную клетку, двигайтесь дальше и забирайте выигрыш вовремя.</p>
+            <a class="button button--accent" href="minesweeper.html">Открыть поле</a>
+          </article>
+
+          <article class="game-card">
+            <div class="game-card__icon" aria-hidden="true">▲</div>
+            <span class="game-card__badge">x2.20 за победу</span>
+            <h3>Камень, ножницы, бумага</h3>
+            <p>Ставьте рейтинг на раунд против компьютера. При ничьей ставка возвращается, а победа дает выплату.</p>
+            <a class="button button--accent" href="rps.html">Сыграть</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--compact">
+      <div class="container">
+        <div class="info-strip">
+          <article class="info-strip__card">
+            <span>1</span>
+            <p>Рейтинг общий для всех игр и хранится в браузере.</p>
+          </article>
+          <article class="info-strip__card">
+            <span>2</span>
+            <p>Каждая ставка списывается из банка, а выигрыш возвращается уже с множителем.</p>
+          </article>
+          <article class="info-strip__card">
+            <span>3</span>
+            <p>Если рейтинг закончился, его можно сбросить и начать новую серию.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>iGame, 2026. Мини-игры с общим рейтингом и локальным сохранением прогресса.</p>
+    </div>
+  </footer>
+
+  <script src="assets/main.js"></script>
+  <script src="pwa.js"></script>
+</body>
+</html>

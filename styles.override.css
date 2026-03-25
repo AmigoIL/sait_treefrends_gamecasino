@@ -1,0 +1,268 @@
+.brand__badge {
+  text-transform: none;
+}
+
+body {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+.site-header {
+  padding-top: env(safe-area-inset-top, 0);
+}
+
+.bank-bar__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.hero__layout--home {
+  align-items: start;
+  padding-top: 0.5rem;
+}
+
+.hero__layout--home .hero__content {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero__layout--home .hero__actions {
+  justify-content: center;
+}
+
+.hero__layout--home h1 {
+  font-size: clamp(3rem, 7vw, 5.4rem);
+}
+
+.hero-panel--raised {
+  align-self: start;
+  transform: translateY(-0.75rem);
+}
+
+.section-heading--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.mine-board {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(130px, 1fr);
+  gap: 1rem;
+  min-width: max-content;
+  align-items: start;
+}
+
+.mine-column {
+  display: grid;
+  gap: 0.85rem;
+  padding: 1rem;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(180deg, rgba(15, 28, 49, 0.98), rgba(7, 16, 31, 0.96));
+  min-width: 132px;
+}
+
+.mine-column--current {
+  border-color: rgba(255, 207, 103, 0.45);
+  box-shadow: 0 0 0 2px rgba(255, 207, 103, 0.08), 0 18px 36px rgba(255, 173, 31, 0.18);
+}
+
+.mine-column__step {
+  color: var(--muted);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.mine-column__multiplier {
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.mine-column__options {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.mine-option {
+  display: grid;
+  justify-items: center;
+  gap: 0.35rem;
+  min-height: 72px;
+  width: 100%;
+  padding: 0.8rem 0.65rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+}
+
+.mine-option__title {
+  font-size: 0.74rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.mine-option__icon {
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+
+.mine-option--safe {
+  color: var(--success);
+  background: linear-gradient(180deg, rgba(19, 66, 54, 0.92), rgba(9, 31, 28, 0.96));
+}
+
+.mine-option--mine {
+  color: var(--danger);
+  background: linear-gradient(180deg, rgba(73, 17, 31, 0.92), rgba(31, 8, 14, 0.96));
+}
+
+.mine-option--peek-safe,
+.mine-option--peek-mine {
+  opacity: 0.72;
+}
+
+.mine-option--selected {
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+}
+
+@media (max-width: 1024px) {
+  .hero-panel--raised {
+    transform: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .site-header {
+    position: sticky;
+  }
+
+  .bank-bar__actions {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .bank-bar__actions .button {
+    flex: 1 1 14rem;
+  }
+
+  .hero__layout--home .hero__content {
+    max-width: none;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .site-header__inner {
+    gap: 0.8rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .site-nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.55rem;
+  }
+
+  .site-nav a {
+    text-align: center;
+  }
+
+  .bank-bar {
+    gap: 0.8rem;
+    padding: 0.85rem;
+    border-radius: 1.1rem;
+  }
+
+  .bank-pill {
+    padding: 0.75rem 0.8rem;
+  }
+
+  .bank-pill__value,
+  .dashboard-card__value,
+  .panel-card__value,
+  .mini-stat__value {
+    font-size: 1.02rem;
+  }
+
+  .play-card {
+    padding: 1rem;
+    border-radius: 1.2rem;
+  }
+
+  .game-layout {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .side-panel,
+  .hero-panel,
+  .dashboard-grid,
+  .info-strip,
+  .game-grid,
+  .hero__actions,
+  .button-stack {
+    gap: 0.8rem;
+  }
+
+  .hero__layout--home {
+    padding-top: 0;
+  }
+
+  .hero__layout--home h1 {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+  }
+
+  .hero__layout--home .hero__content {
+    text-align: left;
+  }
+
+  .hero__layout--home .hero__actions {
+    justify-content: stretch;
+  }
+
+  .hero__layout--home .hero__actions .button {
+    width: 100%;
+  }
+
+  .section-heading--center {
+    text-align: left;
+  }
+
+  .mine-board {
+    grid-auto-columns: minmax(102px, 1fr);
+    gap: 0.65rem;
+  }
+
+  .mine-column {
+    min-width: 104px;
+    padding: 0.7rem;
+  }
+
+  .mine-option {
+    min-height: 60px;
+    padding: 0.65rem 0.45rem;
+  }
+
+  .choice-panel--horizontal {
+    grid-template-columns: 1fr;
+  }
+
+  .choice-button {
+    min-height: 3.5rem;
+  }
+
+  .coin {
+    width: min(220px, 70vw);
+  }
+
+}

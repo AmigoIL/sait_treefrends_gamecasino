@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1528">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="iGame">
+  <title>iGame | Камень, ножницы, бумага</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="styles.override.css">
+</head>
+<body data-page="rps">
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html">
+        <span class="brand__badge">iG</span>
+        <span class="brand__text">iGame</span>
+      </a>
+      <nav class="site-nav" aria-label="Основная навигация">
+        <a href="index.html">Главная</a>
+        <a href="coin-toss.html">Монетка</a>
+        <a href="minesweeper.html">Мины</a>
+        <a href="rps.html">КНБ</a>
+      </nav>
+    </div>
+    <div class="container">
+      <section class="bank-bar" aria-label="Игровой рейтинг">
+        <div class="bank-bar__group">
+          <article class="bank-pill">
+            <span class="bank-pill__label">Рейтинг</span>
+            <strong class="bank-pill__value" data-bank-balance>1 000</strong>
+          </article>
+          <article class="bank-pill">
+            <span class="bank-pill__label">Общий счет</span>
+            <strong class="bank-pill__value" data-bank-profit>+0</strong>
+          </article>
+          <article class="bank-pill">
+            <span class="bank-pill__label">Удачных раундов</span>
+            <strong class="bank-pill__value" data-bank-wins>0</strong>
+          </article>
+          <article class="bank-pill">
+            <span class="bank-pill__label">Статус</span>
+            <strong class="bank-pill__value" data-bank-rank>В игре</strong>
+          </article>
+        </div>
+        <div class="bank-bar__actions">
+          <button class="button button--ghost button--small" type="button" data-install-trigger>Установить</button>
+          <button class="button button--ghost button--small" type="button" data-bank-reset>Сбросить рейтинг</button>
+        </div>
+      </section>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <div class="container">
+      <section class="page-intro">
+        <p class="eyebrow">Дуэль на рейтинг</p>
+        <h1>Камень, ножницы, бумага</h1>
+        <p>Каждый раунд играется на ставку. Победа дает выплату x2.20, а ничья возвращает поставленный рейтинг обратно в банк.</p>
+      </section>
+
+      <section class="play-card">
+        <div class="game-layout">
+          <aside class="side-panel">
+            <article class="panel-card">
+              <span class="panel-card__label">Ставка на раунд</span>
+              <label class="stake-field" for="rps-stake">
+                <input class="stake-field__input" id="rps-stake" type="number" min="10" step="10" value="60" data-stake-input>
+                <span class="stake-field__suffix">рейтинга</span>
+              </label>
+            </article>
+
+            <article class="panel-card">
+              <span class="panel-card__label">Выплата при победе</span>
+              <strong class="panel-card__value">x2.20</strong>
+            </article>
+
+            <article class="panel-card">
+              <span class="panel-card__label">Ничья</span>
+              <p class="panel-card__text">Ставка не сгорает и возвращается полностью.</p>
+            </article>
+
+            <article class="panel-card">
+              <span class="panel-card__label">Сессия</span>
+              <p class="panel-card__text" id="rps-session">Побед: 0 | Ничьих: 0 | Поражений: 0</p>
+            </article>
+          </aside>
+
+          <div class="stage-card">
+            <div class="choice-panel choice-panel--horizontal">
+              <button class="choice-button" type="button" data-choice="rock">
+                <span class="choice-button__icon" aria-hidden="true">К</span>
+                <span>Камень</span>
+              </button>
+              <button class="choice-button" type="button" data-choice="scissors">
+                <span class="choice-button__icon" aria-hidden="true">Н</span>
+                <span>Ножницы</span>
+              </button>
+              <button class="choice-button" type="button" data-choice="paper">
+                <span class="choice-button__icon" aria-hidden="true">Б</span>
+                <span>Бумага</span>
+              </button>
+            </div>
+
+            <div class="duel-panel__choices">
+              <article class="mini-stat">
+                <span class="mini-stat__label">Ваш выбор</span>
+                <strong class="mini-stat__value" id="player-choice">Ожидание хода</strong>
+              </article>
+              <article class="mini-stat">
+                <span class="mini-stat__label">Выбор компьютера</span>
+                <strong class="mini-stat__value" id="computer-choice">Ожидание хода</strong>
+              </article>
+            </div>
+
+            <article class="result-banner" id="rps-result" aria-live="polite">Выберите жест, чтобы начать раунд на ставку.</article>
+
+            <div class="mini-stats">
+              <article class="mini-stat">
+                <span class="mini-stat__label">Счет сессии</span>
+                <strong class="mini-stat__value" id="player-score">0 : 0</strong>
+              </article>
+              <article class="mini-stat">
+                <span class="mini-stat__label">Последний результат</span>
+                <strong class="mini-stat__value" id="rps-last-profit">0</strong>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>iGame, 2026. Дуэль против компьютера на ставку и общий рейтинг.</p>
+    </div>
+  </footer>
+
+  <script src="assets/main.js"></script>
+  <script src="pwa.js"></script>
+  <script src="assets/rps.js"></script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1528">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="iGame">
+  <title>iGame | Мины</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="styles.override.css">
+</head>
+<body data-page="minesweeper">
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html">
+        <span class="brand__badge">iG</span>
+        <span class="brand__text">iGame</span>
+      </a>
+      <nav class="site-nav" aria-label="Основная навигация">
+        <a href="index.html">Главная</a>
+        <a href="coin-toss.html">Монетка</a>
+        <a href="minesweeper.html">Мины</a>
+        <a href="rps.html">КНБ</a>
+      </nav>
+    </div>
+    <div class="container">
+      <section class="bank-bar" aria-label="Игровой рейтинг">
+        <div class="bank-bar__group">
+          <article class="bank-pill">
+            <span class="bank-pill__label">Рейтинг</span>
+            <strong class="bank-pill__value" data-bank-balance>1 000</strong>
+          </article>
+          <article class="bank-pill">
+            <span class="bank-pill__label">Общий счет</span>
+            <strong class="bank-pill__value" data-bank-profit>+0</strong>
+          </article>
+          <article class="bank-pill">
+            <span class="bank-pill__label">Удачных раундов</span>
+            <strong class="bank-pill__value" data-bank-wins>0</strong>
+          </article>
+          <article class="bank-pill">
+            <span class="bank-pill__label">Статус</span>
+            <strong class="bank-pill__value" data-bank-rank>В игре</strong>
+          </article>
+        </div>
+        <div class="bank-bar__actions">
+          <button class="button button--ghost button--small" type="button" data-install-trigger>Установить</button>
+          <button class="button button--ghost button--small" type="button" data-bank-reset>Сбросить рейтинг</button>
+        </div>
+      </section>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <div class="container">
+      <section class="page-intro">
+        <p class="eyebrow">Риск-дорожка</p>
+        <h1>Мины слева направо</h1>
+        <p>На каждом ходе у вас есть три клетки в текущем столбце. Выберите одну безопасную, продвиньтесь дальше и в любой момент можете забрать выигрыш.</p>
+      </section>
+
+      <section class="play-card">
+        <div class="game-layout">
+          <aside class="side-panel">
+            <article class="panel-card">
+              <span class="panel-card__label">Ставка на заход</span>
+              <label class="stake-field" for="mines-stake">
+                <input class="stake-field__input" id="mines-stake" type="number" min="10" step="10" value="80" data-stake-input>
+                <span class="stake-field__suffix">рейтинга</span>
+              </label>
+            </article>
+
+            <article class="panel-card">
+              <span class="panel-card__label">Текущий множитель</span>
+              <strong class="panel-card__value" id="mine-multiplier">x1.00</strong>
+            </article>
+
+            <article class="panel-card">
+              <span class="panel-card__label">Потенциальный выигрыш</span>
+              <strong class="panel-card__value" id="mine-potential">0</strong>
+            </article>
+
+            <article class="panel-card">
+              <span class="panel-card__label">Риск в столбце</span>
+              <strong class="panel-card__value" id="mine-risk">33%</strong>
+            </article>
+
+            <article class="panel-card">
+              <span class="panel-card__label">Статус</span>
+              <p class="panel-card__text" id="mines-status" aria-live="polite">Поставьте рейтинг и нажмите «Начать заход», чтобы открыть первый столбец.</p>
+            </article>
+
+            <div class="button-stack">
+              <button class="button button--accent" id="mines-start-button" type="button">Начать заход</button>
+              <button class="button button--ghost" id="mines-cashout-button" type="button" disabled>Забрать выигрыш</button>
+            </div>
+
+            <p class="helper-text">В каждом столбце спрятана одна мина и две безопасные клетки. Угадали безопасную клетку, переходите к следующему шагу и повышаете множитель.</p>
+          </aside>
+
+          <div class="stage-card">
+            <div class="track-shell">
+              <div class="mine-board" id="mine-track" role="grid" aria-label="Поле с тремя вариантами в каждом ходе"></div>
+            </div>
+
+            <div class="mini-stats">
+              <article class="mini-stat">
+                <span class="mini-stat__label">Прогресс</span>
+                <strong class="mini-stat__value" id="mine-progress">0 / 8</strong>
+              </article>
+              <article class="mini-stat">
+                <span class="mini-stat__label">Последний результат</span>
+                <strong class="mini-stat__value" id="mine-last-result">Раунд еще не сыгран</strong>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>iGame, 2026. Игра с минами, тремя вариантами выбора и кэшаутом.</p>
+    </div>
+  </footer>
+
+  <script src="assets/main.js"></script>
+  <script src="pwa.js"></script>
+  <script src="minesweeper.multi.js"></script>
+</body>
+</html>
